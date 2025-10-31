@@ -1,0 +1,80 @@
+# config/p_mapping.yaml
+# 说明：
+# - mythril_swc: 使用 Mythril 的 SWC-ID（如 SWC-107）
+# - slither:     使用 Slither 的 detector 名称（如 reentrancy-*）
+# - 你可以按需要增删；留空则该 P 暂不计入命中率
+
+P1:
+  name: Reentrancy
+  mythril_swc: ["SWC-107"]
+  slither: ["reentrancy", "reentrancy-eth", "reentrancy-no-eth"]
+
+P2:
+  name: Access Control
+  mythril_swc: ["SWC-105", "SWC-106", "SWC-118", "SWC-124"]   # 示例：按你的口径调整
+  slither: ["missing-ownable", "tx-origin", "suicidal", "unprotected-upgrade"]  # 示例
+
+P3:
+  name: Arithmetic / Overflow
+  mythril_swc: ["SWC-101"]            # pre-0.8 常见
+  slither: ["arbitrary-send-erc20", "unchecked-transfer", "divide-before-multiply"]  # 示例
+
+P4:
+  name: TOD / Front-running
+  mythril_swc: ["SWC-114", "SWC-116"]
+  slither: ["timestamp", "blockhash-usage", "weak-randomness"] # 示例
+
+P5:
+  name: Denial of Service
+  mythril_swc: ["SWC-113"]
+  slither: ["dos-with-revert", "dos-unbounded-operations"]
+
+P6:
+  name: Uninitialized / Defaults
+  mythril_swc: ["SWC-109", "SWC-110"]
+  slither: ["uninitialized-state", "uninitialized-storage", "uninitialized-local"]
+
+P7:
+  name: Delegatecall / Callcode
+  mythril_swc: ["SWC-112"]
+  slither: ["controlled-delegatecall", "dangerous-delegatecall"]
+
+P8:
+  name: Insecure Ether Handling
+  mythril_swc: ["SWC-105"]
+  slither: ["arbitrary-send", "unchecked-send", "dangerous-low-level-call"]
+
+P9:
+  name: Access Modifier / Visibility
+  mythril_swc: ["SWC-100", "SWC-108"]
+  slither: ["missing-zero-check", "unused-return"]
+
+P10:
+  name: Race / Cross-Function Reentrancy
+  mythril_swc: ["SWC-107"]
+  slither: ["reentrancy-unlimited-gas"]
+
+P11:
+  name: Short Address / Encoding
+  mythril_swc: ["SWC-123"]
+  slither: ["abi-encode-packed", "incorrect-shift"]
+
+P12:
+  name: Unsafe Cast / Type
+  mythril_swc: ["SWC-123", "SWC-128"]
+  slither: ["tautological-compare", "incorrect-cast"]
+
+P13:
+  name: Oracle / Price Manipulation
+  mythril_swc: []
+  slither: ["weak-prng", "manipulable-oracle"]   # 示例标签位
+
+P14:
+  name: Upgradeability / Proxy Risks
+  mythril_swc: ["SWC-115"]
+  slither: ["transparent-upgradeable-proxy", "initializer-usage"]   # 示例
+
+P15:
+  name: Misc / Others (Project-specific)
+  mythril_swc: []
+  slither: []
